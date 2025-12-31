@@ -1,8 +1,25 @@
-#include "linked_list/linked_list.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mjaad <mjaad@student.1337.ma>              #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-12-31 14:54:28 by mjaad             #+#    #+#             */
+/*   Updated: 2025-12-31 14:54:28 by mjaad            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	ft_push(t_list **dest, t_list *src)
+#include "rules.h"
+
+void	ft_push(t_list **dest, t_list **src)
 {
-	if (!(*src))
+	t_list	*tmp;
+
+	if (!src || !*src)
 		return ;
-	ft_lstadd_front(dest, src);
+	tmp = *src;
+	*src = (*src)->next;
+	tmp->next = *dest;
+	*dest = tmp;
 }

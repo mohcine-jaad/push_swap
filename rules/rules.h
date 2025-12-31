@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   rules.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjaad <mjaad@student.1337.ma>              #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-12-31 14:54:47 by mjaad             #+#    #+#             */
-/*   Updated: 2025-12-31 14:54:47 by mjaad            ###   ########.fr       */
+/*   Created: 2025-12-31 14:56:09 by mjaad             #+#    #+#             */
+/*   Updated: 2025-12-31 14:56:09 by mjaad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rules.h"
+#ifndef RULES_H
+# define RULES_H
+# include "linked_list/linked_list.h"
 
-void	ft_rotate(t_list **stack)
-{
-	t_list	*top;
-	t_list	*bottom;
+void	ft_push(t_list **dest, t_list **src);
+void	ft_rotate(t_list **stack);
+void	ft_reverse_rotate(t_list **stack);
+void	ft_swap(t_list **stack);
 
-	if (!stack || !(*stack) || !((*stack)->next))
-		return ;
-	top = *stack;
-	bottom = ft_lstlast(*stack);
-	*stack = (*stack)->next;
-	bottom->next = top;
-	top->next = NULL;
-}
+#endif
