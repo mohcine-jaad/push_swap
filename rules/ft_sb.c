@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   ft_sb.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjaad <mjaad@student.1337.ma>              #+#  +:+       +#+        */
+/*   By: mjaad <mjaad@student.42.fr>                #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-12-31 14:54:47 by mjaad             #+#    #+#             */
-/*   Updated: 2025-12-31 14:54:47 by mjaad            ###   ########.fr       */
+/*   Created: 2026-01-01 14:54:20 by mjaad             #+#    #+#             */
+/*   Updated: 2026-01-01 14:54:20 by mjaad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rules.h"
 
-void	ft_rotate(t_list **stack)
+void	sb(t_list **stack)
 {
-	t_list	*top;
-	t_list	*bottom;
-
-	if (!stack || !(*stack) || !((*stack)->next))
+	if (ft_swap(stack))
 		return ;
-	top = *stack;
-	bottom = ft_lstlast(*stack);
-	*stack = (*stack)->next;
-	bottom->next = top;
-	top->next = NULL;
+	write(1, "sb\n", 3);
 }

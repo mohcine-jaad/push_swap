@@ -12,11 +12,22 @@
 
 #ifndef RULES_H
 # define RULES_H
-# include "linked_list/linked_list.h"
+# include "../linked_list/linked_list.h"
 
-void	ft_push(t_list **dest, t_list **src);
-void	ft_rotate(t_list **stack);
-void	ft_reverse_rotate(t_list **stack);
-void	ft_swap(t_list **stack);
+int	ft_push(t_list **dest, t_list **src);
+int	ft_rotate(t_list **stack);
+int	ft_reverse_rotate(t_list **stack);
+int	ft_swap(t_list **stack);
+void	sa(t_list **stack);
+void	sb(t_list **stack);
+void	ss(t_list **stack_a, t_list **stack_b);
+void	pa(t_list **dest, t_list **src);
+void	pb(t_list **dest, t_list **src);
+void	ra(t_list **stack);
+void	rb(t_list **stack);
+void	rr(t_list **stack_a, t_list **stack_b);
+void	rra(t_list **stack);
+void	rrb(t_list **stack);
+void	rrr(t_list **stack_a, t_list **stack_b);
 
 #endif

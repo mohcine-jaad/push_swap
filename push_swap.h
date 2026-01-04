@@ -30,4 +30,5 @@ void	ft_putstr_fd(char *s, int fd);
 int		find_space(char *str);
 long	ft_atol(const char *nptr);
 int		isduplicated(t_list *list);
+void	sort(t_list **stack_a);
 #endif

@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   ft_sa.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mjaad <mjaad@student.1337.ma>              #+#  +:+       +#+        */
+/*   By: mjaad <mjaad@student.42.fr>                #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-12-31 14:54:28 by mjaad             #+#    #+#             */
-/*   Updated: 2025-12-31 14:54:28 by mjaad            ###   ########.fr       */
+/*   Created: 2026-01-01 14:51:23 by mjaad             #+#    #+#             */
+/*   Updated: 2026-01-01 14:51:23 by mjaad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rules.h"
 
-void	ft_push(t_list **dest, t_list **src)
+void	sa(t_list **stack)
 {
-	t_list	*tmp;
-
-	if (!src || !*src)
+	if (ft_swap(stack))
 		return ;
-	tmp = *src;
-	*src = (*src)->next;
-	tmp->next = *dest;
-	*dest = tmp;
+	write(1, "sa\n", 3);
 }
