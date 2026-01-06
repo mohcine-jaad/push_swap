@@ -31,4 +31,5 @@ int		find_space(char *str);
 long	ft_atol(const char *nptr);
 int		isduplicated(t_list *list);
 void	sort(t_list **stack_a);
+void	ft_find_target(t_list **stack_a, t_list **stack_b);
 #endif

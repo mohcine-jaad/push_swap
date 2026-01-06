@@ -19,6 +19,7 @@ t_list	*ft_lstnew(void *content)
 	if (!node)
 		return (NULL);
 	node->content = content;
+	node->target_node = -1;
 	node->next = NULL;
 	return (node);
 }

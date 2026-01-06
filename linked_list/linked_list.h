@@ -20,6 +20,7 @@
 typedef struct s_list
 {
 	void			*content;
+	int				target_node;
 	struct s_list	*next;
 }					t_list;
 

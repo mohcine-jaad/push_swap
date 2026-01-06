@@ -95,7 +95,7 @@ int	main(int counter, char **av)
 	t_list	*stack_a;
 	t_list	*stack_b;
 	t_list	*temp;
-	int i = 4;
+	int i;
 
 	arr = creat_array();
 	(void)counter;
@@ -106,10 +106,20 @@ int	main(int counter, char **av)
 		return (1);
 	}
 	stack_b = NULL;
+	temp = stack_a;
+	while (temp)
+	{
+		printf("(%d)", *(int *)(temp->content));
+		printf(" -> ");
+		temp = temp->next;
+	}
+	printf("\n");
+	i = ft_lstsize(stack_a) - 3;
 	while (i--)
 		pb(&stack_b, &stack_a);
 	sort(&stack_a);
 	temp = stack_a;
+	printf("stack A:\n");
 	while (temp)
 	{
 		printf("(%d)", *(int *)(temp->content));
@@ -118,6 +128,7 @@ int	main(int counter, char **av)
 	}
 	temp = stack_b;
 	printf("\n");
+	printf("stack b:\n");
 	while (temp)
 	{
 		printf("(%d)", *(int *)(temp->content));
@@ -125,6 +136,7 @@ int	main(int counter, char **av)
 		temp = temp->next;
 	}
 	printf("\n");
+	ft_find_target(&stack_a, &stack_b);
 	
 	ft_lstclear(&stack_a, delelements);
 	ft_lstclear(&stack_b, delelements);

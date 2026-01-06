@@ -14,7 +14,17 @@
 #include "linked_list/linked_list.h"
 #include "rules/rules.h"
 
-void	sort3(t_list **stack_a)
+static void	sort2(t_list **stack_a)
+{
+	int	head;
+	int	tail;
+
+	head = *((int *)(*stack_a)->content);
+	tail = *((int *)(*stack_a)->next->content);
+	if (head > tail)
+		sa(stack_a);
+}
+static void	sort3(t_list **stack_a)
 {
 	int	a;
 	int	b;
@@ -39,4 +49,15 @@ void	sort3(t_list **stack_a)
 		ra(stack_a);
 		sa(stack_a);
 	}
+}
+
+void sort(t_list **stack_a)
+{
+	int	size;
+
+	size = ft_lstsize(*stack_a);
+	if (size == 3)
+		sort3(stack_a);
+	else if (size == 2)
+		sort2(stack_a);
 }
