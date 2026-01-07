@@ -21,6 +21,8 @@ typedef struct s_list
 {
 	void			*content;
 	int				target_node;
+	int				cost_a;
+	int				cost_b;
 	struct s_list	*next;
 }					t_list;
 
