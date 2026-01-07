@@ -137,6 +137,23 @@ int	main(int counter, char **av)
 	}
 	printf("\n");
 	ft_find_target(&stack_a, &stack_b);
+	temp = stack_b;
+	printf("\n");
+	while (temp)
+	{
+		printf("(target = %d)",(temp->target_node));
+		printf(" -> ");
+		temp = temp->next;
+	}
+	printf("\n");
+	ft_cost_to_top(stack_a, stack_b);
+	temp = stack_b;
+	while (temp)
+	{
+		printf("(cost_b = %d)",(temp->cost_b));
+		printf(" -> ");
+		temp = temp->next;
+	}
 	
 	ft_lstclear(&stack_a, delelements);
 	ft_lstclear(&stack_b, delelements);
