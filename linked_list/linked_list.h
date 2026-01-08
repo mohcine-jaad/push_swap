@@ -23,6 +23,7 @@ typedef struct s_list
 	int				target_node;
 	int				cost_a;
 	int				cost_b;
+	int				total_cost;
 	struct s_list	*next;
 }					t_list;
 

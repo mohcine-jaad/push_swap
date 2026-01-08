@@ -150,7 +150,7 @@ int	main(int counter, char **av)
 	temp = stack_b;
 	while (temp)
 	{
-		printf("(cost_b = %d)",(temp->cost_b));
+		printf("(cost_b = %d | cost_a = %d | total = %d)",(temp->cost_b), (temp->cost_a), (temp->total_cost));
 		printf(" -> ");
 		temp = temp->next;
 	}
