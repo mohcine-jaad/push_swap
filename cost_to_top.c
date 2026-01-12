@@ -13,40 +13,25 @@
 #include "push_swap.h"
 #include "linked_list/linked_list.h"
 #include "rules/rules.h"
-static int	get_index(t_list *stack, int node)
-{
-	int		index;
-
-	index = 0;
-	while (stack)
-	{
-		if (*((int *)(stack->content)) == node)
-			return (index);
-		stack = stack->next;
-		index++;
-	}
-
-	return (index);
-}
 
 void	ft_cost_to_top(t_list *stack_a, t_list *stack_b)
 {
 	t_list	*current_node;
-    int		lsize_b;
-    int		lsize_a;
+	int		lsize_b;
+	int		lsize_a;
 	int		index;
 
-    lsize_b = ft_lstsize(stack_b);
-    lsize_a = ft_lstsize(stack_a);
+	lsize_b = ft_lstsize(stack_b);
+	lsize_a = ft_lstsize(stack_a);
 	current_node = stack_b;
 	while (current_node)
 	{
-		index = get_index(stack_b, *((int *)(current_node->content)));
+		index = ft_lstindex(stack_b, current_node);
 		if (index <= (lsize_b / 2))
 			current_node->cost_b = index;
 		else
 			current_node->cost_b = lsize_b - index;
-		index = get_index(stack_a, current_node->target_node);
+		index = ft_lstindex(stack_a, current_node->target_node);
 		if (index <= (lsize_a / 2))
 			current_node->cost_a = index;
 		else

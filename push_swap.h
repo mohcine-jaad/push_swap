@@ -30,7 +30,10 @@ void	ft_putstr_fd(char *s, int fd);
 int		find_space(char *str);
 long	ft_atol(const char *nptr);
 int		isduplicated(t_list *list);
-void	sort(t_list **stack_a);
+void    sort(t_list **stack_a, t_list **stack_b);
 void	ft_find_target(t_list **stack_a, t_list **stack_b);
 void	ft_cost_to_top(t_list *stack_a, t_list *stack_b);
+void	turk(t_list **stack_a, t_list **stack_b);
+t_list *find_cheapest_node(t_list *stack);
+
 #endif

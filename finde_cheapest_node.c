@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   finde_cheapest_node.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjaad <mjaad@student.42.fr>                #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-12-27 12:08:19 by mjaad             #+#    #+#             */
-/*   Updated: 2025-12-27 12:08:19 by mjaad            ###   ########.fr       */
+/*   Created: 2026-01-08 13:48:09 by mjaad             #+#    #+#             */
+/*   Updated: 2026-01-08 13:48:09 by mjaad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "linked_list.h"
 
-t_list	*ft_lstnew(void *content)
+#include "push_swap.h"
+#include "linked_list/linked_list.h"
+#include "rules/rules.h"
+
+t_list *find_cheapest_node(t_list *stack)
 {
-	t_list	*node;
+	t_list	*cheapest;
+	int		min;
 
-	node = (t_list *)malloc(sizeof(t_list));
-	if (!node)
-		return (NULL);
-	node->content = content;
-	node->target_node = NULL;
-	node->next = NULL;
-	return (node);
+	min = stack->total_cost;
+	cheapest = stack;
+	while (stack)
+	{
+		if (stack->total_cost < min)
+		{
+			min = stack->total_cost;
+			cheapest = stack;
+		}
+		stack = stack->next;
+	}
+	return (cheapest);
 }

@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstindex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjaad <mjaad@student.42.fr>                #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-12-27 12:08:19 by mjaad             #+#    #+#             */
-/*   Updated: 2025-12-27 12:08:19 by mjaad            ###   ########.fr       */
+/*   Created: 2026-01-08 15:56:05 by mjaad             #+#    #+#             */
+/*   Updated: 2026-01-08 15:56:05 by mjaad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "linked_list.h"
 
-t_list	*ft_lstnew(void *content)
+int	ft_lstindex(t_list *lst, t_list *node)
 {
-	t_list	*node;
+	int	index;
 
-	node = (t_list *)malloc(sizeof(t_list));
-	if (!node)
-		return (NULL);
-	node->content = content;
-	node->target_node = NULL;
-	node->next = NULL;
-	return (node);
+	index = 0;
+	while (lst)
+	{
+		if (lst == node)
+			return (index);
+		lst = lst->next;
+		index++;
+	}
+	return (-1);
 }

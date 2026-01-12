@@ -14,29 +14,29 @@
 #include "linked_list/linked_list.h"
 #include "rules/rules.h"
 
-#include <stdio.h>
-
-static int closer(t_list **list, int node)
+static t_list *closer(t_list *list, t_list *node)
 {
-    t_list  *i;
-    int     tmp;
-    int     target;
+    t_list *i;
+    t_list *target;
     int     diff;
+    int     tmp;
 
-    i = *list;
+    i = list;
+    target = NULL;
     tmp = 0;
     while (i)
     {
-        target = *((int *)(i->content));
-        diff = node - target;
+        diff = *((int *)(node->content)) - *((int *)(i->content));
         if (diff < 0 && (tmp == 0 || diff > tmp))
+        {
             tmp = diff;
+            target = i;
+        }
         i = i->next;
     }
-    if (!tmp)
-		return (*((int *)(*list)->content));
-    else
-        return (node - tmp); 
+    if (target == NULL)
+        target = list;
+    return (target);
 }
 
 void	ft_find_target(t_list **stack_a, t_list **stack_b)
@@ -46,7 +46,7 @@ void	ft_find_target(t_list **stack_a, t_list **stack_b)
 	tmp_b = *stack_b;
 	while (tmp_b)
 	{
-		tmp_b->target_node = closer(stack_a, *(int *)(tmp_b->content));
+		tmp_b->target_node = closer(*stack_a, tmp_b);
 		tmp_b = tmp_b->next;
 	}
 }

@@ -23,13 +23,14 @@ static void	sort2(t_list **stack_a)
 	tail = *((int *)(*stack_a)->next->content);
 	if (head > tail)
 		sa(stack_a);
-}
+	}
 static void	sort3(t_list **stack_a)
 {
 	int	a;
 	int	b;
 	int	c;
-
+		
+		ft_putstr_fd("hhhh\n", 1);
 	a = *((int *)(*stack_a)->content);
 	b = *((int *)(*stack_a)->next->content);
 	c = *((int *)(*stack_a)->next->next->content);
@@ -51,13 +52,28 @@ static void	sort3(t_list **stack_a)
 	}
 }
 
-void sort(t_list **stack_a)
+static void init_stack_b(t_list **stack_b, t_list **stack_a)
+{
+	int	size;
+	
+	size = ft_lstsize(*stack_a);
+	while (size-- > 3)
+		pb(stack_b, stack_a);
+}
+
+void sort(t_list **stack_a, t_list **stack_b)
 {
 	int	size;
 
 	size = ft_lstsize(*stack_a);
-	if (size == 3)
-		sort3(stack_a);
-	else if (size == 2)
+	if (size == 2)
 		sort2(stack_a);
+	else if (size == 3)
+		sort3(stack_a);
+	else
+	{
+		init_stack_b(stack_b, stack_a);
+		sort3(stack_a);
+		turk(stack_a, stack_b);
+	}
 }
