@@ -17,12 +17,12 @@ int	ft_push(t_list **dest, t_list **src)
 	t_list	*tmp;
 
 	if (!src || !*src )
-		return (1);
+		return (0);
 	tmp = *src;
 	*src = (*src)->next;
 	tmp->next = *dest;
 	*dest = tmp;
-	return (0);
+	return (1);
 }
 
 int	ft_reverse_rotate(t_list **stack)

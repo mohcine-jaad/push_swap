@@ -14,7 +14,7 @@
 
 void	pb(t_list **dest, t_list **src)
 {
-	if (ft_push(dest, src))
+	if (!ft_push(dest, src))
 		return ;
 	write(1, "pb\n", 3);
 }

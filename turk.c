@@ -14,6 +14,18 @@
 #include "linked_list/linked_list.h"
 #include "rules/rules.h"
 
+static t_list *find_min(t_list *stack)
+{
+    t_list *min_node = stack;
+    while (stack)
+    {
+        if (*(int*)stack->content < *(int*)min_node->content)
+            min_node = stack;
+        stack = stack->next;
+    }
+    return min_node;
+}
+
 static void	ft_move_to_top(t_list **stack_a, t_list **stack_b, t_list *cheapest_node)
 {
 	int	inode;
@@ -40,6 +52,9 @@ static void	ft_move_to_top(t_list **stack_a, t_list **stack_b, t_list *cheapest_
 void	turk(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*cheapest_node;
+	t_list	*min_node;
+	int		index;
+	int		size;
 
 	while (*stack_b)
 	{
@@ -49,4 +64,15 @@ void	turk(t_list **stack_a, t_list **stack_b)
 		ft_move_to_top(stack_a, stack_b, cheapest_node);
 		pa(stack_a, stack_b);
 	}
+
+	min_node = find_min(*stack_a);
+    index = ft_lstindex(*stack_a, min_node);
+    size = ft_lstsize(*stack_a);
+    
+    if (index <= size / 2)
+        while (index-- > 0)
+            ra(stack_a);
+    else
+        while (index++ < size)
+            rra(stack_a);
 }

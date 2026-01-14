@@ -30,7 +30,6 @@ static void	sort3(t_list **stack_a)
 	int	b;
 	int	c;
 		
-		ft_putstr_fd("hhhh\n", 1);
 	a = *((int *)(*stack_a)->content);
 	b = *((int *)(*stack_a)->next->content);
 	c = *((int *)(*stack_a)->next->next->content);
@@ -55,7 +54,6 @@ static void	sort3(t_list **stack_a)
 static void init_stack_b(t_list **stack_b, t_list **stack_a)
 {
 	int	size;
-	
 	size = ft_lstsize(*stack_a);
 	while (size-- > 3)
 		pb(stack_b, stack_a);

@@ -94,7 +94,7 @@ int	main(int counter, char **av)
 	t_array	*arr;
 	t_list	*stack_a;
 	t_list	*stack_b;
-	t_list	*temp;
+	// t_list	*temp;
 
 	arr = creat_array();
 	(void)counter;
@@ -105,53 +105,25 @@ int	main(int counter, char **av)
 		return (1);
 	}
 	stack_b = NULL;
-	temp = stack_a;
-	while (temp)
-	{
-		printf("(%d)", *(int *)(temp->content));
-		printf(" -> ");
-		temp = temp->next;
-	}
-	printf("\n");
+	// temp = stack_a;
+	// while (temp)
+	// {
+	// 	printf("(%d)", *(int *)(temp->content));
+	// 	printf(" -> ");
+	// 	temp = temp->next;
+	// }
+	// printf("\n");
 	sort(&stack_a, &stack_b);
-	temp = stack_a;
-	printf("stack A:\n");
-	while (temp)
-	{
-		printf("(%d)", *(int *)(temp->content));
-		printf(" -> ");
-		temp = temp->next;
-	}
-	temp = stack_b;
-	printf("\n");
-	printf("stack b:\n");
-	while (temp)
-	{
-		printf("(%d)", *(int *)(temp->content));
-		printf(" -> ");
-		temp = temp->next;
-	}
-	printf("\n");
-	ft_find_target(&stack_a, &stack_b);
-	temp = stack_b;
-	printf("\n");
-	while (temp)
-	{
-		printf("(target = %d)",*(int *)(temp->target_node->content));
-		printf(" -> ");
-		temp = temp->next;
-	}
-	printf("\n");
-	ft_cost_to_top(stack_a, stack_b);
-	temp = stack_b;
-	while (temp)
-	{
-		printf("(cost_b = %d | cost_a = %d | total = %d)",(temp->cost_b), (temp->cost_a), (temp->total_cost));
-		printf(" -> ");
-		temp = temp->next;
-	}
+	// temp = stack_a;
+	// printf("stack A:\n");
+	// while (temp)
+	// {
+	// 	printf("(%d)", *(int *)(temp->content));
+	// 	printf(" -> ");
+	// 	temp = temp->next;
+	// }
+	// printf("\n");
 	ft_lstclear(&stack_a, delelements);
-	ft_lstclear(&stack_b, delelements);
 	clear_array(arr, delelements);
 }
 // for (size_t i = 0; i < arr->number_of_elememts; i++)
