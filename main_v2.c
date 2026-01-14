@@ -94,7 +94,6 @@ int	main(int counter, char **av)
 	t_array	*arr;
 	t_list	*stack_a;
 	t_list	*stack_b;
-	// t_list	*temp;
 
 	arr = creat_array();
 	(void)counter;
@@ -105,26 +104,17 @@ int	main(int counter, char **av)
 		return (1);
 	}
 	stack_b = NULL;
-	// temp = stack_a;
-	// while (temp)
-	// {
-	// 	printf("(%d)", *(int *)(temp->content));
-	// 	printf(" -> ");
-	// 	temp = temp->next;
-	// }
-	// printf("\n");
 	sort(&stack_a, &stack_b);
-	// temp = stack_a;
-	// printf("stack A:\n");
-	// while (temp)
+	// t_list *tmp;
+	// tmp = stack_a;
+	// while (tmp)
 	// {
-	// 	printf("(%d)", *(int *)(temp->content));
-	// 	printf(" -> ");
-	// 	temp = temp->next;
+	// 	printf("%d\n", *(int*)tmp->content);
+	// 	tmp = tmp->next;
 	// }
-	// printf("\n");
 	ft_lstclear(&stack_a, delelements);
 	clear_array(arr, delelements);
+	return (0);
 }
 // for (size_t i = 0; i < arr->number_of_elememts; i++)
 // {

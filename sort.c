@@ -62,7 +62,6 @@ static void init_stack_b(t_list **stack_b, t_list **stack_a)
 void sort(t_list **stack_a, t_list **stack_b)
 {
 	int	size;
-
 	size = ft_lstsize(*stack_a);
 	if (size == 2)
 		sort2(stack_a);
