@@ -23,7 +23,8 @@ static void	sort2(t_list **stack_a)
 	tail = *((int *)(*stack_a)->next->content);
 	if (head > tail)
 		sa(stack_a);
-	}
+}
+
 static void	sort3(t_list **stack_a)
 {
 	int	a;

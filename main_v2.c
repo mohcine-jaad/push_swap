@@ -104,19 +104,9 @@ int	main(int counter, char **av)
 		return (1);
 	}
 	stack_b = NULL;
+	exit (0);
 	sort(&stack_a, &stack_b);
-	// t_list *tmp;
-	// tmp = stack_a;
-	// while (tmp)
-	// {
-	// 	printf("%d\n", *(int*)tmp->content);
-	// 	tmp = tmp->next;
-	// }
 	ft_lstclear(&stack_a, delelements);
 	clear_array(arr, delelements);
 	return (0);
 }
-// for (size_t i = 0; i < arr->number_of_elememts; i++)
-// {
-// 	printf("%s\n", (char *)get_element(arr, i));
-// }

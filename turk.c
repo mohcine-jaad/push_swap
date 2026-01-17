@@ -35,7 +35,7 @@ static void	optimal_move(t_list **a, t_list **b, int *idx_b, int *idx_a)
 
 	size_a = ft_lstsize(*a);
 	size_b = ft_lstsize(*b);
-	if ((*idx_b >= (size_b / 2)) && (*idx_a >= (size_a / 2)))
+	if ((*idx_b > (size_b / 2)) && (*idx_a > (size_a / 2)))
 	{
 		while (*idx_a < size_a && *idx_b < size_b)
 		{
@@ -44,7 +44,7 @@ static void	optimal_move(t_list **a, t_list **b, int *idx_b, int *idx_a)
 			(*idx_b)++;
 		}
 	}
-	else if ((*idx_b < (size_b / 2)) && (*idx_a < (size_a / 2)) )
+	else if ((*idx_b <= (size_b / 2)) && (*idx_a <= (size_a / 2)) )
 	{
 		while (*idx_a > 0 && *idx_b > 0)
 		{
@@ -54,31 +54,29 @@ static void	optimal_move(t_list **a, t_list **b, int *idx_b, int *idx_a)
 		}
 	}
 }
-static void	ft_to_top(t_list **a, t_list **b, t_list *node)
+
+static void	ft_move_to_top(t_list **stack_a, t_list **stack_b, t_list *cheapest_node)
 {
 	int	inode;
 	int	itarget;
-	int	size_b;
-	int	size_a;
 
-	size_b = ft_lstsize(*b);
-	size_a = ft_lstsize(*a);
-	inode = ft_lstindex(*b, node);
-	itarget = ft_lstindex(*a, node->target_node);
-	optimal_move(a, b, &inode, &itarget);
-	if (inode >= (size_b / 2))
-		while (inode++ < size_b)
-			rrb(b);
+	inode = ft_lstindex(*stack_b, cheapest_node);
+	itarget = ft_lstindex(*stack_a, cheapest_node->target_node);
+	optimal_move(stack_a, stack_b, &inode, &itarget);
+	if (inode >= (ft_lstsize(*stack_b) / 2))
+		while (inode++ < ft_lstsize(*stack_b))
+			rrb(stack_b);
 	else
 		while (inode-- > 0)
-			rb(b);
-	if (itarget >= (size_a / 2))
-		while (itarget++ < size_a)
-			rra(a);
+			rb(stack_b);
+	if (itarget >= (ft_lstsize(*stack_a) / 2))
+		while (itarget++ < ft_lstsize(*stack_a))
+			rra(stack_a);
 	else
 		while (itarget-- > 0)
-			ra(a);
+			ra(stack_a);
 }
+
 void	turk(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*cheapest_node;
@@ -91,18 +89,16 @@ void	turk(t_list **stack_a, t_list **stack_b)
 		ft_find_target(stack_a, stack_b);
 		ft_cost_to_top(*stack_a, *stack_b);
 		cheapest_node = find_cheapest_node(*stack_b);
-		ft_to_top(stack_a, stack_b, cheapest_node);
+		ft_move_to_top(stack_a, stack_b, cheapest_node);
 		pa(stack_a, stack_b);
 	}
-
 	min_node = find_min(*stack_a);
-    index = ft_lstindex(*stack_a, min_node);
-    size = ft_lstsize(*stack_a);
-    
-    if (index <= size / 2)
-        while (index-- > 0)
-            ra(stack_a);
-    else
-        while (index++ < size)
-            rra(stack_a);
+	index = ft_lstindex(*stack_a, min_node);
+	size = ft_lstsize(*stack_a);
+	if (index <= size / 2)
+		while (index-- > 0)
+			ra(stack_a);
+	else
+		while (index++ < size)
+			rra(stack_a);
 }

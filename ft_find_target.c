@@ -14,29 +14,43 @@
 #include "linked_list/linked_list.h"
 #include "rules/rules.h"
 
-static t_list *closer(t_list *list, t_list *node)
+static t_list	*find_min(t_list *stack)
 {
-    t_list *i;
-    t_list *target;
-    int     diff;
-    int     tmp;
+	t_list	*min_node;
 
-    i = list;
-    target = NULL;
-    tmp = 0;
-    while (i)
-    {
-        diff = *((int *)(node->content)) - *((int *)(i->content));
-        if (diff < 0 && (tmp == 0 || diff > tmp))
-        {
-            tmp = diff;
-            target = i;
-        }
-        i = i->next;
-    }
-    if (target == NULL)
-        target = list;
-    return (target);
+	min_node = stack;
+	while (stack)
+	{
+		if (*(int *)stack->content < *(int *)min_node->content)
+			min_node = stack;
+		stack = stack->next;
+	}
+	return (min_node);
+}
+
+static t_list	*closer(t_list *list, t_list *node)
+{
+	t_list	*i;
+	t_list	*target;
+	int		diff;
+	int		tmp;
+
+	i = list;
+	target = NULL;
+	tmp = 0;
+	while (i)
+	{
+		diff = *((int *)(node->content)) - *((int *)(i->content));
+		if (diff < 0 && (tmp == 0 || diff > tmp))
+		{
+			tmp = diff;
+			target = i;
+		}
+		i = i->next;
+	}
+	if (target == NULL)
+		target = find_min(list);
+	return (target);
 }
 
 void	ft_find_target(t_list **stack_a, t_list **stack_b)
