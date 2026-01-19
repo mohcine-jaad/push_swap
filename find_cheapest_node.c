@@ -14,7 +14,7 @@
 #include "linked_list/linked_list.h"
 #include "rules/rules.h"
 
-t_list *find_cheapest_node(t_list *stack)
+t_list	*find_cheapest_node(t_list *stack)
 {
 	t_list	*cheapest;
 	int		min;

@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_element.c                                      :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjaad <mjaad@student.42.fr>                #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-01-17 17:21:05 by mjaad             #+#    #+#             */
-/*   Updated: 2026-01-17 17:21:05 by mjaad            ###   ########.fr       */
+/*   Created: 2026-01-17 17:30:10 by mjaad             #+#    #+#             */
+/*   Updated: 2026-01-17 17:30:10 by mjaad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dynamic_array.h"
+#include "push_swap.h"
 
-void	*get_element(t_array *arr, size_t index)
+size_t	ft_strlen(const char *str)
 {
-	if (index >= arr->current_size || index > arr->number_of_elememts)
-		return (NULL);
-	return (arr->data[index]);
+	size_t	count;
+
+	count = 0;
+	while (*str++)
+		count++;
+	return (count);
 }

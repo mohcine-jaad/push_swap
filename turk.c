@@ -44,7 +44,7 @@ static void	optimal_move(t_list **a, t_list **b, int *idx_b, int *idx_a)
 			(*idx_b)++;
 		}
 	}
-	else if ((*idx_b <= (size_b / 2)) && (*idx_a <= (size_a / 2)) )
+	else if ((*idx_b <= (size_b / 2)) && (*idx_a <= (size_a / 2)))
 	{
 		while (*idx_a > 0 && *idx_b > 0)
 		{
@@ -55,26 +55,26 @@ static void	optimal_move(t_list **a, t_list **b, int *idx_b, int *idx_a)
 	}
 }
 
-static void	ft_move_to_top(t_list **stack_a, t_list **stack_b, t_list *cheapest_node)
+static void	ft_move_to_top(t_list **a, t_list **b, t_list *cheapest_node)
 {
 	int	inode;
 	int	itarget;
 
-	inode = ft_lstindex(*stack_b, cheapest_node);
-	itarget = ft_lstindex(*stack_a, cheapest_node->target_node);
-	optimal_move(stack_a, stack_b, &inode, &itarget);
-	if (inode >= (ft_lstsize(*stack_b) / 2))
-		while (inode++ < ft_lstsize(*stack_b))
-			rrb(stack_b);
+	inode = ft_lstindex(*b, cheapest_node);
+	itarget = ft_lstindex(*a, cheapest_node->target_node);
+	optimal_move(a, b, &inode, &itarget);
+	if (inode >= (ft_lstsize(*b) / 2))
+		while (inode++ < ft_lstsize(*b))
+			rrb(b);
 	else
 		while (inode-- > 0)
-			rb(stack_b);
-	if (itarget >= (ft_lstsize(*stack_a) / 2))
-		while (itarget++ < ft_lstsize(*stack_a))
-			rra(stack_a);
+			rb(b);
+	if (itarget >= (ft_lstsize(*a) / 2))
+		while (itarget++ < ft_lstsize(*a))
+			rra(a);
 	else
 		while (itarget-- > 0)
-			ra(stack_a);
+			ra(a);
 }
 
 void	turk(t_list **stack_a, t_list **stack_b)

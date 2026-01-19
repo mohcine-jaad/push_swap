@@ -25,6 +25,10 @@ long	ft_atol(const char *nptr)
 		if (*(nptr)++ == '-')
 			sign = -1;
 	while (*nptr >= 48 && *nptr <= 57)
+	{
+		if (res > INT_MAX || res < INT_MIN)
+			return (LONG_MAX);
 		res = res * 10 + *(nptr)++ - 48;
+	}
 	return (res * sign);
 }

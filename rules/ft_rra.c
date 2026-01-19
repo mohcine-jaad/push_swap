@@ -14,7 +14,7 @@
 
 void	rra(t_list **stack)
 {
-	if(ft_reverse_rotate(stack))
+	if (ft_reverse_rotate(stack))
 		return ;
 	write(1, "rra\n", 4);
 }

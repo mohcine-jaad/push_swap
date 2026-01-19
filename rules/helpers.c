@@ -16,7 +16,7 @@ int	ft_push(t_list **dest, t_list **src)
 {
 	t_list	*tmp;
 
-	if (!src || !*src )
+	if (!src || !*src)
 		return (0);
 	tmp = *src;
 	*src = (*src)->next;

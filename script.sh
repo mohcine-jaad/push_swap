@@ -3,7 +3,7 @@ test=""
 
 for i in {1..10000}
 do
-    args=$(shuf -i 0-1000 -n 500 | tr "\n" " ")
+    args=$(shuf -i 0-1000 -n 4 | tr "\n" " ")
     res=$(./push_swap $args | wc -l)
 
     if [ "$res" -gt "$max" ]; then

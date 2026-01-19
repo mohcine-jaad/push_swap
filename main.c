@@ -15,12 +15,7 @@
 #include "linked_list/linked_list.h"
 #include "rules/rules.h"
 
-void	delelements(void *elem)
-{
-	free(elem);
-}
-
-int	get_argument(t_array *array, char **av)
+static int	get_argument(t_array *array, char **av)
 {
 	char	**tmp;
 	int		i;
@@ -29,7 +24,7 @@ int	get_argument(t_array *array, char **av)
 	i = 1;
 	while (av[i])
 	{
-		if (find_space(av[i]))
+		if (ft_find_space(av[i]))
 		{
 			tmp = ft_split(av[i]);
 			j = 0;
@@ -49,7 +44,7 @@ int	get_argument(t_array *array, char **av)
 	return (0);
 }
 
-int	ft_examin(t_array *arr)
+static int	ft_examin(t_array *arr)
 {
 	size_t	index;
 	char	*token;
@@ -64,22 +59,22 @@ int	ft_examin(t_array *arr)
 	return (0);
 }
 
-t_list	*build_list(t_array *arr)
+static t_list	*build_list(t_array *arr)
 {
-	t_list *list;
+	t_list	*list;
 	size_t	counter;
 	long	tmp;
-	int *value;
+	int		*value;
 
 	counter = 0;
 	list = NULL;
-	while(counter < arr->number_of_elememts)
+	while (counter < arr->number_of_elememts)
 	{
-		tmp = ft_atol((char*)arr->data[counter]);
+		tmp = ft_atol((char *)arr->data[counter]);
 		if (tmp < INT_MIN || tmp > INT_MAX)
 		{
-			ft_lstclear(&list, delelements);
-			return NULL;
+			ft_lstclear(&list, free);
+			return (NULL);
 		}
 		value = malloc(sizeof(int));
 		*value = (int)tmp;
@@ -89,24 +84,41 @@ t_list	*build_list(t_array *arr)
 	return (list);
 }
 
+static int	initialise(t_array **arr, t_list **stack_a, char **av)
+{
+	if (get_argument(*arr, av))
+		return (1);
+	if (ft_examin(*arr))
+		return (1);
+	*stack_a = build_list(*arr);
+	if (!*stack_a)
+		return (1);
+	if (isduplicated(*stack_a))
+		return (1);
+	return (0);
+}
+
 int	main(int counter, char **av)
 {
 	t_array	*arr;
 	t_list	*stack_a;
 	t_list	*stack_b;
 
+	if (counter < 2)
+		return (0);
+	stack_a = NULL;
+	stack_b = NULL;
 	arr = creat_array();
-	(void)counter;
-	if (get_argument(arr, av) || ft_examin(arr) || !(stack_a = build_list(arr)) || isduplicated(stack_a))
+	if (initialise(&arr, &stack_a, av))
 	{
 		ft_putstr_fd("Error\n", 1);
-		clear_array(arr, delelements);
+		clear_array(arr, free);
+		ft_lstclear(&stack_a, free);
 		return (1);
 	}
-	stack_b = NULL;
-	exit (0);
+	is_sorted(&stack_a, arr);
 	sort(&stack_a, &stack_b);
-	ft_lstclear(&stack_a, delelements);
-	clear_array(arr, delelements);
+	ft_lstclear(&stack_a, free);
+	clear_array(arr, free);
 	return (0);
 }

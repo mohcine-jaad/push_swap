@@ -12,16 +12,6 @@
 
 #include "push_swap.h"
 
-size_t	ft_strlen(const char *str)
-{
-	size_t	count;
-
-	count = 0;
-	while (*str++)
-		count++;
-	return (count);
-}
-
 char	*ft_strdup(const char *s)
 {
 	char	*location;
@@ -60,6 +50,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	*location = '\0';
 	return (origin);
 }
+
 void	ft_bzero(void *s, size_t n)
 {
 	unsigned char	*p;
@@ -81,6 +72,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	ft_bzero(ptr, nmemb * size);
 	return (ptr);
 }
+
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	unsigned char	*dest_p;

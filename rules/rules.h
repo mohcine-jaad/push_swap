@@ -14,10 +14,10 @@
 # define RULES_H
 # include "../linked_list/linked_list.h"
 
-int	ft_push(t_list **dest, t_list **src);
-int	ft_rotate(t_list **stack);
-int	ft_reverse_rotate(t_list **stack);
-int	ft_swap(t_list **stack);
+int		ft_push(t_list **dest, t_list **src);
+int		ft_rotate(t_list **stack);
+int		ft_reverse_rotate(t_list **stack);
+int		ft_swap(t_list **stack);
 void	sa(t_list **stack);
 void	sb(t_list **stack);
 void	ss(t_list **stack_a, t_list **stack_b);
